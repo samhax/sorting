@@ -9,13 +9,27 @@ import com.sam.engine.SortEngine;
 public final class Bogosort extends SortEngine {
 
 	private final String NAME = "Bogosort";
+	private boolean show = false;
+	
 	@Override
 	public String getName(){
 		return NAME;
 	}
 	
+	@Override
+	public void showDetail(boolean show) {
+		this.show = show;
+	}
+	
+	@Override
 	public void sort(List<Integer> list) {
+	    if(show){
+	    	System.out.println(list.toString());
+	    }
 		while (!isSorted(list)) {
+			if(show){
+				System.out.println(list.toString());
+			}
 			Collections.shuffle(list);
 		}
 	}

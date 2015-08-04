@@ -6,25 +6,37 @@ import com.sam.algorithmImplementation.Quicksort;
 import com.sam.engine.SortEngine;
 
 public final class SortEngineFactory {
-	public SortEngine getDefault(){
+	private SortEngine getDefault(){
 		return new Quicksort();
 	} 
 	
-	public SortEngine getNewOrDefault(String name){
+	public SortEngine getNewOrDefault(
+			String name, 
+			String detail){
+		SortEngine result = null;
 		if(name != null){
 			if(name.toLowerCase().lastIndexOf("quick") >= 0 ||
 					name.toLowerCase().lastIndexOf("1") >= 0){
-				return new Quicksort();
+				result = new Quicksort();
 			}
 			if(name.toLowerCase().lastIndexOf("bogo") >= 0 ||
 					name.toLowerCase().lastIndexOf("2") >= 0){
-				return new Bogosort();
+				result = new Bogosort();
 			}
 			if(name.toLowerCase().lastIndexOf("bubble") >= 0 ||
 					name.toLowerCase().lastIndexOf("3") >= 0){
-				return new BubbleSort();
+				result = new BubbleSort();
 			}
+		} else {
+			result = getDefault();
 		}
-		return getDefault();
+		if(detail != null && 
+				(detail == "" ||
+				detail.toLowerCase().lastIndexOf("1") >= 0 ||
+				detail.toLowerCase().lastIndexOf("y") >= 0 ||
+				detail.toLowerCase().lastIndexOf("si") >= 0)){
+			result.showDetail(true);
+		}
+		return result;
 	}
 }
