@@ -1,50 +1,32 @@
 package com.sam;
 
 import java.util.*;
-import org.apache.commons.lang3.time.StopWatch;
-
-import com.sam.algorithmImplementation.Bogosort;
-import com.sam.algorithmImplementation.BubbleSort;
-import com.sam.algorithmImplementation.Quicksort;
-import com.sam.engine.SortEngine;
 
 public class ObjectSorter {
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to array sorter!");
-		StopWatch myWatch = new StopWatch();
-		List<Integer> myList =  new ArrayList<Integer>();
-		initInvertedList(myList, 11);
-		SortEngine mySortingEngine;
+		List<Integer> myReceivedList = null;
+		if(args.length > 0){
+			List<String> myArgs  = new ArrayList<String>();
+			myReceivedList = new ArrayList<Integer>();
+			Collections.addAll(myArgs, args);
+			
+			for (String string : myArgs) {
+				if(string.matches("\\[(\\s*\\d*\\s*,)*\\d*\\]")){
+					String txtArray = string
+							.replaceAll("\\[", "")
+							.replaceAll("\\]", "")
+							.replaceAll("\\s", "");
+					String[] array = txtArray.split(",");
+					for (String value : array) {
+						myReceivedList.add(Integer.parseInt(value));
+					}
+				}
+			}
+		}
+		SortConsoleInterpret main = new SortConsoleInterpret(myReceivedList);
 		
-		int item = 0;
-		switch(item){
-		case 1:
-			System.out.println("Starting your quicksort sort of " + myList.size() + " elements");
-			mySortingEngine = new Quicksort();
-			break;
-		case 2:
-			System.out.println("Starting your bubble sort sort of " + myList.size() + " elements");
-			mySortingEngine = new BubbleSort();
-			break;
-		default:
-			System.out.println("Starting your bogosort sort of " + myList.size() + " elements");
-			mySortingEngine = new Bogosort();
-			break;
-		}
-		myWatch.start();
-		mySortingEngine.sort(myList);
-		myWatch.split();
-		double myTime = myWatch.getSplitTime() == 0.0 ? 0 : myWatch.getSplitTime() / 1000;
-		myWatch.stop();
-		System.out.println("Hello :D, your " + myList.size() + " element list has been sorted and it took " + myTime + " seconds to sort.");
-		System.out.println(myList.toString());
-	}
-	
-	private static void initInvertedList(List<Integer> list, int length){
-		for (int i = length; i > 0; i--) {
-			list.add(i);
-		}
+		main.start();
 	}
 }
 
