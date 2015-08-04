@@ -8,7 +8,7 @@ import com.sam.engine.SortEngine;
 
 public final class Bogosort extends SortEngine {
 	
-	public void Sort(List<Integer> list) {
+	public void sort(List<Integer> list) {
 		while (!isSorted(list)) {
 			Collections.shuffle(list);
 		}

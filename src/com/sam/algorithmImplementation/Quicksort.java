@@ -8,7 +8,7 @@ import com.sam.engine.SortEngine;
 public final class Quicksort extends SortEngine {
 
 	@Override
-	public void Sort(List<Integer> arr) {
+	public void sort(List<Integer> arr) {
 		//TODO: fix autism here
 		List<Integer> result = quickSort(arr); 
 		arr.clear();
