@@ -7,6 +7,13 @@ import com.sam.engine.SortEngine;
 
 public final class Quicksort extends SortEngine {
 
+	private final String NAME = "Quicksort";
+	
+	@Override
+	public String getName(){
+		return NAME;
+	}
+
 	@Override
 	public void sort(List<Integer> arr) {
 		//TODO: fix autism here

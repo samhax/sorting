@@ -7,6 +7,12 @@ import java.util.List;
 import com.sam.engine.SortEngine;
 
 public final class Bogosort extends SortEngine {
+
+	private final String NAME = "Bogosort";
+	@Override
+	public String getName(){
+		return NAME;
+	}
 	
 	public void sort(List<Integer> list) {
 		while (!isSorted(list)) {

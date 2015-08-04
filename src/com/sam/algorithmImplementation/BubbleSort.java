@@ -6,6 +6,12 @@ import com.sam.engine.SortEngine;
 
 public final class BubbleSort extends SortEngine {
 
+	private final String NAME = "Bubble sort";
+	@Override
+	public String getName(){
+		return NAME;
+	}
+
 	@Override
 	public void sort(List<Integer> list) {
 		int size = list.size();

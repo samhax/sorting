@@ -2,7 +2,7 @@ package com.sam;
 
 import java.util.*;
 
-public class ObjectSorter {
+public final class ObjectSorter {
 
 	public static void main(String[] args) {
 		List<Integer> myReceivedList = null;
